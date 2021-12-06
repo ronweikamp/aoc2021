@@ -22,10 +22,7 @@ sol1Rec s i = sol1Rec (step s) (i - 1)
 
 step :: [Int] -> [Int]
 step state = let newstateexisting = map (\i -> if i > 6 then i-1 else mod (i-1) 7) state in
-                 newstateexisting ++ replicate (countNew state newstateexisting) 8
-
-countNew :: [Int] -> [Int] -> Int
-countNew state newstateexisting = length (filter (== 6) [s0 + s1 | (s0, s1) <- zip state newstateexisting])
+                 newstateexisting ++ replicate (length (filter (==0) state)) 8
 
 parseInput :: String -> [Int]
 parseInput s = map read (splitComma s)
